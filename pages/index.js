@@ -27,7 +27,7 @@ const Home = ({siteData,homePageData}) => {
 
       <div className="w-full h-full p-8 flex flex-col gap-8 items-center justify-center text-center leading-relaxed text-white">
         <span className="text-5xl max-w-3xl ">
-          {homePageData ? homePageData.hero_heading : 'A Platform for memorize and share your todo notes easily'}
+          {homePageData.hero_heading}
         </span>
         <div className="flex gap-8">
           <Link href="/todo">
