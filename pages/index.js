@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import Link from "next/Link";
+import Link from "next/link";
 import axios from "axios";
 
 const url = 'https://todoo-feeds.herokuapp.com'
