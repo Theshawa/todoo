@@ -12,7 +12,7 @@ const CheckWeather = ({siteData}) => {
     setLoading(true)  
     axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}`
+        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}`
       )
       .then((data) => {
         setWeather({
