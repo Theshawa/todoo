@@ -34,7 +34,7 @@ const About = ({siteData}) => {
 
 export default About;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   
   const siteData = await axios.get(url+'/site')
 
