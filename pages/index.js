@@ -21,7 +21,7 @@ const Home = ({siteData,homePageData}) => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundImage:
-          `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("${homePageData ? url + homePageData.hero_image.url : 'https://images.unsplash.com/photo-1566388989655-c9b7eb3f5096?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'}")`,
+          `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://images.unsplash.com/photo-1560146560-1fce47962590?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80")`,
       }}
     >
 
