@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-const url = 'http://localhost:1337'
+const url = 'https://todoo-feeds.herokuapp.com'
 
 const CheckWeather = ({siteData}) => {
   const [location, setLocation] = useState();

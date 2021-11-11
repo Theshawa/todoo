@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import { v4 } from "uuid";
 import axios from "axios";
-const url = 'http://localhost:1337'
+const url = 'https://todoo-feeds.herokuapp.com'
 
 const EmailSend = ({ title, description, close, time }) => {
   const [loading, setLoading] = useState(false);

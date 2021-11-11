@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Link from "next/Link";
 import axios from "axios";
 
-const url = 'http://localhost:1337'
+const url = 'https://todoo-feeds.herokuapp.com'
 const Home = ({siteData,homePageData}) => {
   
   return (

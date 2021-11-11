@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-const url = 'http://localhost:1337'
+const url = 'https://todoo-feeds.herokuapp.com'
 const About = ({siteData}) => {
   return (
     <Layout data={{
