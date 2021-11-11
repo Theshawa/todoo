@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import axios from "axios";
 const url = 'https://todoo-feeds.herokuapp.com'
 const About = ({siteData}) => {
   return (
