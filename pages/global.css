@@ -1,0 +1,15 @@
+h1{
+    @apply text-4xl font-mirrorweather font-bold;
+}
+input,textarea{
+    @apply p-4 bg-dark bg-opacity-5 rounded-lg placeholder-dark text-lg focus:bg-opacity-10 outline-none;
+}
+button,.button{
+    @apply px-4 py-3 bg-primary  rounded-lg placeholder-dark text-lg hover:bg-opacity-90 w-max cursor-pointer text-white outline-none;
+}
+button.blur{
+    @apply opacity-20 pointer-events-none;
+}
+.h-max{
+    height: max-content;
+}

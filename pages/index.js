@@ -1,82 +1,74 @@
-import Head from 'next/head'
+import Layout from "../components/Layout";
+import Link from "next/Link";
+import axios from "axios";
 
-export default function Home() {
+const url = 'http://localhost:1337'
+const Home = ({siteData,homePageData}) => {
+  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout
+      data={{
+        title:'ToDOO | Home',
+        description:siteData.site_description || '',
+        keywords:siteData.site_tags || '',
+        author:siteData.site_author || '',
+        icon:url + siteData.favicon.url
+      }}
+      hideHeader
+      className="p-0 h-screen flex flex-col "
+      style={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundImage:
+          `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("${homePageData ? url + homePageData.hero_image.url : 'https://images.unsplash.com/photo-1566388989655-c9b7eb3f5096?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'}")`,
+      }}
+    >
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="w-full h-full p-8 flex flex-col gap-8 items-center justify-center text-center leading-relaxed text-white">
+        <span className="text-5xl max-w-3xl ">
+          {homePageData ? homePageData.hero_heading : 'A Platform for memorize and share your todo notes easily'}
+        </span>
+        <div className="flex gap-8">
+          <Link href="/todo">
+            <button>Add Todos</button>
+          </Link>
+          <Link href="/check-weather">
+            <button>Check Weather</button>
+          </Link>
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+      </div>
+      <p className="w-full h-full px-8 text-center leading-relaxed text-white">
+        By <a
+          href="https://www.theshawa.cf/about"
+          rel="noreferrer"
           target="_blank"
-          rel="noopener noreferrer"
+          className="hover:underline"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
-  )
+          Theshawa Dasun
+        </a> 😁
+      </p>
+    </Layout>
+  );
+};
+
+export default Home;
+
+export async function getStaticProps(context) {
+  
+  const siteData = await axios.get(url+'/site')
+  const homePageData = await axios.get(url+'/home-page')
+
+  if (!siteData || !homePageData) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  
+  return {
+    props: { siteData:siteData.data,homePageData:homePageData.data }, // will be passed to the page component as props
+  }
 }
